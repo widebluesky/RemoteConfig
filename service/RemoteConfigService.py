@@ -37,9 +37,9 @@ class RemoteConfigService(object):
         return
     def update_remote_repository(self):
         "update remote repository"
-        (status, output) = commands.getstatusoutput('git --git-dir="' + Constant.GIT_LOCAL_REPOSITORY_PATH +'/.git" add *')
-        (status, output) = commands.getstatusoutput('git --git-dir="' + Constant.GIT_LOCAL_REPOSITORY_PATH +'/.git" commit -m "333"')
-        (status, output) = commands.getstatusoutput('git --git-dir="' + Constant.GIT_LOCAL_REPOSITORY_PATH + ' push --force')
+        (status, output) = commands.getstatusoutput('git --git-dir="' + Constant.GIT_LOCAL_REPOSITORY_PATH + '/.git" add *')
+        (status, output) = commands.getstatusoutput('git --git-dir="' + Constant.GIT_LOCAL_REPOSITORY_PATH + '/.git" commit -m "333"')
+        (status, output) = commands.getstatusoutput('git --git-dir="' + Constant.GIT_LOCAL_REPOSITORY_PATH + '/.git push --force')
         print status
         print output
         return
