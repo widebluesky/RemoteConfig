@@ -2,7 +2,6 @@
 # -*- coding: UTF-8 -*-
 "Constant Module"
 IS_TEST = True
-GIT_SKIP_VERSION_VALID = False
 GIT_REPOSITORY_NAME = "RemoteConfig"
 GIT_LOCAL_PATH = "/Users/xuyi/Documents/document/git"
 GIT_LOCAL_REPOSITORY_PATH = GIT_LOCAL_PATH + "/" + GIT_REPOSITORY_NAME

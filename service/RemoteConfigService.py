@@ -26,22 +26,15 @@ class RemoteConfigService(object):
     def update_config_file(self):
         "update config file"
         config_file_path = Constant.GIT_LOCAL_CONFIG_FILE_PATH
-        local_version = ''
         local_config_dic = JsonUtil.json_file_2_dic(config_file_path)
-        result_dic = self.get_result_dic()
-        if local_config_dic.has_key('version'):
-            local_version = local_config_dic['version']
-        if not result_dic.has_key('version'):
-            LogUtil.print_e('result_config has no version')
+        result_config_dic = self.get_result_dic()
+        local_config_json = JsonUtil.dic_2_json(local_config_dic)
+        result_config_json = JsonUtil.dic_2_json(result_config_dic)
+        if local_config_json == result_config_json:
+            LogUtil.print_e('nothing need to update')
             return False
-        result_version = result_dic['version']
-        validate_version = self.validate_version(local_version, result_version)
-        if not (validate_version or Constant.GIT_SKIP_VERSION_VALID):
-            LogUtil.print_e('version code is invalid or nothing need to update')
-            return False
-        result_json = JsonUtil.dic_2_json(result_dic)
         result_file = open(config_file_path, 'wb')
-        result_file.write(result_json)
+        result_file.write(result_config_json)
         return True
     def update_remote_repository(self):
         "更新远程仓库"
@@ -67,7 +60,7 @@ class RemoteConfigService(object):
     def get_result_dic(self):
         "get result dic"
         result_dic = {}
-        result_dic['version'] = '1.0.0'
+        result_dic['version'] = '1.0.1'
         server_info = {}
         server_info['ip_local'] = SocketUtil.SocketUtil().get_host_by_name()
         server_info['ip_remote'] = SocketUtil.SocketUtil().get_internet_ip_address()
