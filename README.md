@@ -7,7 +7,7 @@ Update remote config on github by python.
 
 1. Install [Python](https://www.python.org/downloads/release/python-352/) 3.0+
 
-2. Install [Git Client](https://git-scm.com/downloads)3. 
+2. Install [Git Client](https://git-scm.com/downloads)
 
 3. Config RemoteConfig/config/Constant.py
 
