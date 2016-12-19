@@ -19,7 +19,10 @@ class SocketUtil(object):
         return socket.gethostbyname(self.get_fqdn())
     def get_internet_ip_address(self):
         "Get Internet IP Address Method"
-        response = urllib2.urlopen('http://www.ip.cn')
+        headers = {'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'}
+        request = urllib2.Request(url = 'http://www.ip.cn',headers = headers)
+        response = urllib2.urlopen(request)
+        # response = urllib2.urlopen('http://www.ip.cn')
         html = response.read()
         ip_address = re.search(r'code.(.*?)..code', html)
         return ip_address.group(1)
