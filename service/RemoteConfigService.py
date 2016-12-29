@@ -30,9 +30,9 @@ class RemoteConfigService(object):
         result_config_dic = self.get_result_dic()
         local_config_json = JsonUtil.dic_2_json(local_config_dic)
         result_config_json = JsonUtil.dic_2_json(result_config_dic)
-        if local_config_json == result_config_json:
+	if local_config_json == result_config_json:
             LogUtil.print_e('nothing need to update')
-            return False
+            return True
         result_file = open(config_file_path, 'wb')
         result_file.write(result_config_json)
         return True
