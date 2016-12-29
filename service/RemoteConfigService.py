@@ -63,7 +63,7 @@ class RemoteConfigService(object):
         result_dic['version'] = '1.0.1'
         server_info = {}
         server_info['ip_local'] = SocketUtil.SocketUtil().get_host_by_name()
-        server_info['ip_remote'] = SocketUtil.SocketUtil().get_internet_ip_address2()
+        server_info['ip_remote'] = SocketUtil.SocketUtil().get_internet_ip_address()
         result_dic['server_info'] = server_info
         return result_dic
     def validate_version(self, old_version, new_version):
